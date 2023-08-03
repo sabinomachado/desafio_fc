@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\CidadeController;
+use App\Http\Controllers\Api\MedicoController;
 use App\Http\Controllers\Api\AuthController;
 
 
@@ -24,6 +25,8 @@ use App\Http\Controllers\Api\AuthController;
 
 
 Route::get('/cidades', [CidadeController::class, 'index']);
+
+Route::get('/medicos', [MedicoController::class, 'index']);
 
 Route::group([
 

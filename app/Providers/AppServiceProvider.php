@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\CidadeRepositoryInterface;
 use App\Repositories\CidadeRepository;
+use App\Interfaces\MedicoRepositoryInterface;
+use App\Repositories\MedicoRepository;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(CidadeRepositoryInterface::class, CidadeRepository::class);
+        $this->app->bind(MedicoRepositoryInterface::class, MedicoRepository::class);
     }
 
     /**
