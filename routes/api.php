@@ -36,7 +36,9 @@ Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, '
 
 Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'store']);
 
-Route::put('/pacientes/{id_paciente}', [PacienteController::class, 'update']);
+Route::put('/pacientes/{id_paciente}', [PacienteController::class, 'update'])->middleware('api');
+
+Route::post('/pacientes', [PacienteController::class, 'store'])->middleware('api');
 
 
 Route::group([

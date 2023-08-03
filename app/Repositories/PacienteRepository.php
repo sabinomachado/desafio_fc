@@ -24,4 +24,13 @@ class PacienteRepository implements PacienteRepositoryInterface
            
         }
     }
+
+        public function store($paciente){
+            //dd($paciente);
+           $newPaciente = Paciente::create([
+                'nome' => $paciente['nome'],
+                'celular' => $paciente['celular']
+        ]);
+        return $newPaciente;
+        }
 }

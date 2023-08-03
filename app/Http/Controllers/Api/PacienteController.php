@@ -34,9 +34,11 @@ class PacienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PacienteRequest $request)
     {
-        //
+        $paciente = $request->validated();
+        $paciente = $this->pacientesRepository->store($paciente);
+        return $this->respondWithSuccess($paciente);
     }
 
     /**
