@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Cidade;
 class CidadeController extends Controller
 {
     /**
@@ -12,7 +12,9 @@ class CidadeController extends Controller
      */
     public function index()
     {
-        dd("chegou aqui cidades!");
+        $cidades = Cidade::all();
+
+        return response()->json($cidades);
     }
 
     /**
