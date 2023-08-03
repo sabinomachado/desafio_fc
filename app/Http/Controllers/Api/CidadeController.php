@@ -8,14 +8,18 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Cidade;
+use F9Web\ApiResponseHelpers;
 class CidadeController extends Controller
 {
 
+    use ApiResponseHelpers;
     private CidadeRepositoryInterface $cidadeRepository;
 
     public function __construct(CidadeRepositoryInterface $cidadeRepository) 
     {
         $this->cidadeRepository = $cidadeRepository;
+        $this->setDefaultSuccessResponse([]);
+
     }
 
     /**
@@ -23,12 +27,10 @@ class CidadeController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'data' => $this->cidadeRepository->getAllCidades()
-        ]);
-        // $cidades = Cidade::all();
+        $cidades = $this->cidadeRepository->getAllCidades();
+        
+        return $this->respondWithSuccess($cidades);
 
-        // return response()->json($cidades);
     }
 
     /**

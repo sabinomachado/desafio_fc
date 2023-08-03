@@ -8,15 +8,19 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Medico;
+use F9Web\ApiResponseHelpers;
 
 class MedicoController extends Controller
 {
 
+    use ApiResponseHelpers;
     private MedicoRepositoryInterface $medicosRepository;
 
     public function __construct(MedicoRepositoryInterface $medicosRepository) 
     {
         $this->medicosRepository = $medicosRepository;
+        $this->setDefaultSuccessResponse([]);
+
     }
 
     /**
@@ -24,9 +28,8 @@ class MedicoController extends Controller
      */
     public function index()
     {
-          return response()->json([
-            'data' => $this->medicosRepository->getAllMedicos()
-        ]);
+        $medicos = $this->medicosRepository->getAllMedicos();
+        return $this->respondWithSuccess($medicos);
     }
 
     /**
@@ -60,4 +63,20 @@ class MedicoController extends Controller
     {
         //
     }
+
+     /**
+     * Lista médicos pela cidade específica.
+     */
+    public function medicosPorCidade(Request $request)
+    {
+        $id_cidade = $request['id_cidade'];
+
+        return $medicosCidade = $this->medicosRepository->getAllMedicosCidade($id_cidade);
+
+        //return $medicosCidade;
+       
+
+    }
+
+    
 }

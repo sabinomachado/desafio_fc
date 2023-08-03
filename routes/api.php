@@ -27,6 +27,7 @@ use App\Http\Controllers\Api\AuthController;
 Route::get('/cidades', [CidadeController::class, 'index']);
 
 Route::get('/medicos', [MedicoController::class, 'index']);
+Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'medicosPorCidade']);
 
 Route::group([
 
