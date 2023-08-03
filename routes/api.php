@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\CidadeController;
 use App\Http\Controllers\Api\MedicoController;
+use App\Http\Controllers\Api\PacienteController;
 use App\Http\Controllers\Api\MedicoPacienteController;
 use App\Http\Controllers\Api\AuthController;
 
@@ -31,9 +32,11 @@ Route::get('/medicos', [MedicoController::class, 'index']);
 Route::post('/medicos', [MedicoController::class, 'store'])->middleware('api');
 Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'medicosPorCidade']);
 
-Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'index']);
+Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'list']);
 
 Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'store']);
+
+Route::put('/pacientes/{id_paciente}', [PacienteController::class, 'update']);
 
 
 Route::group([

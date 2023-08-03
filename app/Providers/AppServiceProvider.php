@@ -9,6 +9,8 @@ use App\Interfaces\MedicoRepositoryInterface;
 use App\Repositories\MedicoRepository;
 use App\Interfaces\MedicoPacienteRepositoryInterface;
 use App\Repositories\MedicoPacienteRepository;
+use App\Interfaces\PacienteRepositoryInterface;
+use App\Repositories\PacienteRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(CidadeRepositoryInterface::class, CidadeRepository::class);
         $this->app->bind(MedicoRepositoryInterface::class, MedicoRepository::class);
+        $this->app->bind(PacienteRepositoryInterface::class, PacienteRepository::class);
         $this->app->bind(MedicoPacienteRepositoryInterface::class, MedicoPacienteRepository::class);
     }
 

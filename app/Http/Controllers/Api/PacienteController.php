@@ -3,10 +3,26 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\PacienteRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\PacienteRequest;
+use Illuminate\Http\Response;
+use App\Models\Paciente;
+use F9Web\ApiResponseHelpers;
 class PacienteController extends Controller
 {
+
+    use ApiResponseHelpers;
+    private PacienteRepositoryInterface $pacientesRepository;
+
+    public function __construct(PacienteRepositoryInterface $pacientesRepository) 
+    {
+        $this->pacientesRepository = $pacientesRepository;
+        $this->setDefaultSuccessResponse([]);
+
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -34,9 +50,14 @@ class PacienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PacienteRequest $request, Paciente $paciente)
     {
-        //
+        $validated = $request->only($paciente->getFillable());
+        $id_paciente =  $request['id_paciente'];
+        $paciente = $this->pacientesRepository->update($id_paciente, $validated);
+        
+        return $paciente;
+
     }
 
     /**

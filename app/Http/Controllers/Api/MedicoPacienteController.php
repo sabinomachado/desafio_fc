@@ -26,9 +26,10 @@ class MedicoPacienteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function list(Request $request)
     {
-        dd("chegou aqu321321i!");
+        $id_medico = $request['id_medico'];
+        $pacientesMedico = $this->medicosPacienteRepository->list($id_medico);
     }
 
     /**
