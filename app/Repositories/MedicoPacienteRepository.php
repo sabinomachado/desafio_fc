@@ -3,17 +3,27 @@
 namespace App\Repositories;
 
 use App\Interfaces\MedicoPacienteRepositoryInterface;
-use App\Models\Medico;
-use App\Models\Cidade;
+use App\Models\MedicoPaciente;
 use F9Web\ApiResponseHelpers;
 
-class MedicoRepository implements MedicoRepositoryInterface 
+class MedicoPacienteRepository implements MedicoPacienteRepositoryInterface 
 {
-    public function store() 
+    public function store($validated) 
     {
-        dd("aquiiiiiii");
+        $medicoPaciente  =  MedicoPaciente::create([
+            'medico_id' => $validated['medico_id'],
+            'paciente_id' => $validated['paciente_id'],
+        ]);
+
+        return $medicoPaciente;
+    }
+
+    public function index() 
+    {
+        dd("aquiiii321321321iii");
         return Medico::all();
     }
+
 
 
 

@@ -28,15 +28,18 @@ class MedicoPacienteController extends Controller
      */
     public function index()
     {
-        dd("chegou aqui!");
+        dd("chegou aqu321321i!");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MedicoPacienteRequest $request)
     {
-        dd("chegou aqui!");
+        $validated = $request->validated();
+        $medicoPaciente = $this->medicosPacienteRepository->store($validated);
+ 
+        return $this->respondWithSuccess($medicoPaciente);
     }
 
     /**
@@ -62,4 +65,6 @@ class MedicoPacienteController extends Controller
     {
         //
     }
+
+
 }

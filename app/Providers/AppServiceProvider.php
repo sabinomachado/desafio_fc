@@ -7,6 +7,8 @@ use App\Interfaces\CidadeRepositoryInterface;
 use App\Repositories\CidadeRepository;
 use App\Interfaces\MedicoRepositoryInterface;
 use App\Repositories\MedicoRepository;
+use App\Interfaces\MedicoPacienteRepositoryInterface;
+use App\Repositories\MedicoPacienteRepository;
 
 
 class AppServiceProvider extends ServiceProvider

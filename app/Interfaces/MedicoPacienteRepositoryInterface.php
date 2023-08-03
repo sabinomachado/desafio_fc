@@ -2,9 +2,10 @@
 
 namespace App\Interfaces;
 
-interface MedicoRepositoryInterface 
+interface MedicoPacienteRepositoryInterface 
 {
-    public function store() ;
+    public function store($validated) ;
+    public function index() ;
     
    
 }

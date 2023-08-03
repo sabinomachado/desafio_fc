@@ -31,6 +31,10 @@ Route::get('/medicos', [MedicoController::class, 'index']);
 Route::post('/medicos', [MedicoController::class, 'store'])->middleware('api');
 Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'medicosPorCidade']);
 
+Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'index']);
+
+Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'store']);
+
 
 Route::group([
 
