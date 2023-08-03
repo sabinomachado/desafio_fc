@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\CidadeController;
 use App\Http\Controllers\Api\MedicoController;
+use App\Http\Controllers\Api\MedicoPacienteController;
 use App\Http\Controllers\Api\AuthController;
 
 
@@ -27,7 +28,10 @@ use App\Http\Controllers\Api\AuthController;
 Route::get('/cidades', [CidadeController::class, 'index']);
 
 Route::get('/medicos', [MedicoController::class, 'index']);
+Route::post('/medicos', [MedicoController::class, 'store'])->middleware('api');
 Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'medicosPorCidade']);
+
+Route::get('/medicos/{id_medico}/pacientes .', [MedicoPacienteController::class, 'create'])->middleware('api');
 
 Route::group([
 

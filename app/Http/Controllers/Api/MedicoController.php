@@ -6,6 +6,7 @@ use App\Interfaces\MedicoRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\MedicoRequest;
 use Illuminate\Http\Response;
 use App\Models\Medico;
 use F9Web\ApiResponseHelpers;
@@ -35,9 +36,12 @@ class MedicoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MedicoRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $medico = $this->medicosRepository->createMedico($validated);
+ 
+        return $this->respondWithSuccess($medico);
     }
 
     /**

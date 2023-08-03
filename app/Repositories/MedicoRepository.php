@@ -33,4 +33,14 @@ class MedicoRepository implements MedicoRepositoryInterface
             }
         }
     }
+
+    public function createMedico($validated){
+        $medico  =  Medico::create([
+            'nome' => $validated['nome'],
+            'especialidade' => $validated['especialidade'],
+            'cidade_id' => $validated['cidade_id'],
+        ]);
+
+        return $medico;
+    }
 }
