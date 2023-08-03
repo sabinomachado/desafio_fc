@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cidade>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Paciente>
  */
-class CidadeFactory extends Factory
+class PacienteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +16,13 @@ class CidadeFactory extends Factory
      */
     public function definition(): array
     {
+
         $faker = \Faker\Factory::create('pt_BR');
+
         return [
-            'nome' => $faker->city,
-            'estado' => $faker->stateAbbr,
+            'nome' =>  $faker->name,
+            'cpf' =>  $faker->cpf,
+            'celular' =>  sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
         ];
     }
 }
