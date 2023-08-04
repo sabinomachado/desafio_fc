@@ -20,6 +20,7 @@ class PacienteController extends Controller
     {
         $this->pacientesRepository = $pacientesRepository;
         $this->setDefaultSuccessResponse([]);
+        $this->middleware('auth:api', ['except' => ['update']]);
 
     }
 

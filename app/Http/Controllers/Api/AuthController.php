@@ -93,4 +93,9 @@ class AuthController extends Controller
     {
         return Auth::guard();
     }
+
+    public function user(){
+        dd(auth()->user());
+        return response()->json($user);
+    }
 }

@@ -30,6 +30,7 @@ class MedicoPacienteController extends Controller
     {
         $id_medico = $request['id_medico'];
         $pacientesMedico = $this->medicosPacienteRepository->list($id_medico);
+        return $pacientesMedico;
     }
 
     /**

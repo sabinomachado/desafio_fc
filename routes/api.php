@@ -32,9 +32,9 @@ Route::get('/medicos', [MedicoController::class, 'index']);
 Route::post('/medicos', [MedicoController::class, 'store'])->middleware('api');
 Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'medicosPorCidade']);
 
-Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'list']);
+Route::get('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'list'])->middleware('api');
 
-Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'store']);
+Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'store'])->middleware('api');
 
 Route::put('/pacientes/{id_paciente}', [PacienteController::class, 'update'])->middleware('api');
 
@@ -45,7 +45,6 @@ Route::group([
 
     'middleware' => 'api',
     'namespace' => 'App\Http\Controllers\Api',
-    'prefix' => 'auth'
 
 ], function ($router) {
 
@@ -53,5 +52,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::get('user', 'AuthController@user');
 
 });
