@@ -21,4 +21,9 @@ class Cidade extends Model
     protected $dates = [
         'created_at','updated_at','deleted_at'
       ];
+
+      public function medico(): BelongsTo
+      {
+          return $this->belongsTo(Medico::class);
+      }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
             $table->string('nome',100);
-            $table->string('cpf',20)->nullable();
+            $table->string('cpf',20);
             $table->string('celular',20);
             $table->timestamps();
             $table->softDeletes();
