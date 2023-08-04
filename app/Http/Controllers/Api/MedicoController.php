@@ -44,31 +44,7 @@ class MedicoController extends Controller
  
         return $this->respondWithSuccess($medico);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
+    
      /**
      * Lista médicos pela cidade específica.
      */
@@ -77,10 +53,6 @@ class MedicoController extends Controller
         $id_cidade = $request['id_cidade'];
 
         return $medicosCidade = $this->medicosRepository->getAllMedicosCidade($id_cidade);
-
-        //return $medicosCidade;
-       
-
     }
 
     

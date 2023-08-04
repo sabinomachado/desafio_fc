@@ -24,13 +24,7 @@ class PacienteController extends Controller
 
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  
 
     /**
      * Store a newly created resource in storage.
@@ -40,14 +34,6 @@ class PacienteController extends Controller
         $paciente = $request->validated();
         $paciente = $this->pacientesRepository->store($paciente);
         return $this->respondWithSuccess($paciente);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -61,13 +47,5 @@ class PacienteController extends Controller
         
         return $paciente;
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
