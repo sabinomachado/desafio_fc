@@ -11,18 +11,36 @@ class MedicoPacienteRepository implements MedicoPacienteRepositoryInterface
 {
     public function store($validated) 
     {
-        $medicoPaciente  =  MedicoPaciente::create([
-            'medico_id' => $validated['medico_id'],
-            'paciente_id' => $validated['paciente_id'],
-        ]);
 
-        return $medicoPaciente;
+        $medico = Medico::find($validated['medico_id']);
+        $paciente = Medico::find($validated['paciente_id']);
+
+        if($medico != null  &&  $paciente != null){
+            $medicoPaciente  =  MedicoPaciente::create([
+                'medico_id' => $validated['medico_id'],
+                'paciente_id' => $validated['paciente_id'],
+            ]);
+
+            return $medicoPaciente;
+        }else{
+            if($medico == null and $paciente == null){
+                $mensagem = "Verifique se os valores inseridos são válidos";
+            }
+            if($medico == null){
+                $mensagem = "Verifique se os valor medico_id é um valor válido";
+            }
+            if($paciente == null){
+                $mensagem = "Verifique se os valor paciente_id é um valor válido";
+            }
+
+            return response()->json([$mensagem], 400);
+        }
+       
     }
 
     public function list($id_medico) 
     {;
         $medico = Medico::find($id_medico);
-        //dd($medico);
 
         if(!$medico){
             dd("chegou aqui");

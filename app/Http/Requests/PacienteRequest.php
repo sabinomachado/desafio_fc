@@ -24,7 +24,7 @@ class PacienteRequest extends FormRequest
         return [
             'nome' => 'required|max:100',
             'celular' => 'required|max:100',
-            'cpf' => 'required|max:20',
+            'cpf' => 'max:20',
         ];
     }
 }
