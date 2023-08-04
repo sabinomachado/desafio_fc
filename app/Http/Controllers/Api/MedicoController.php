@@ -40,6 +40,7 @@ class MedicoController extends Controller
     {
         $validated = $request->validated();
         $medico = $this->medicosRepository->createMedico($validated);
+
  
         return $this->respondWithSuccess($medico);
     }

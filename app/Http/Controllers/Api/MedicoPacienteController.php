@@ -20,6 +20,7 @@ class MedicoPacienteController extends Controller
     {
         $this->medicosPacienteRepository = $medicosPacienteRepository;
         $this->setDefaultSuccessResponse([]);
+        $this->middleware('auth:api');
 
     }
 
